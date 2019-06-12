@@ -76,6 +76,7 @@ class SequenceTagger(flair.nn.Model):
         use_crf: bool = True,
         use_rnn: bool = True,
         rnn_layers: int = 1,
+        rnn_type: str = "LSTM",
         dropout: float = 0.0,
         word_dropout: float = 0.05,
         locked_dropout: float = 0.5,
@@ -85,6 +86,7 @@ class SequenceTagger(flair.nn.Model):
         super(SequenceTagger, self).__init__()
 
         self.use_rnn = use_rnn
+        self.rnn_type = rnn_type
         self.hidden_size = hidden_size
         self.use_crf: bool = use_crf
         self.rnn_layers: int = rnn_layers
@@ -126,7 +128,6 @@ class SequenceTagger(flair.nn.Model):
             self.embedding2nn = torch.nn.Linear(rnn_input_dim, rnn_input_dim)
 
         # bidirectional LSTM on top of embedding layer
-        self.rnn_type = "LSTM"
         if self.rnn_type in ["LSTM", "GRU"]:
 
             if self.nlayers == 1:
