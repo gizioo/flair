@@ -176,6 +176,7 @@ class SequenceTagger(flair.nn.Model):
             "tag_type": self.tag_type,
             "use_crf": self.use_crf,
             "use_rnn": self.use_rnn,
+            "rnn_type": self.rnn_type,
             "rnn_layers": self.rnn_layers,
             "use_word_dropout": self.use_word_dropout,
             "use_locked_dropout": self.use_locked_dropout,
@@ -201,6 +202,7 @@ class SequenceTagger(flair.nn.Model):
             tag_type=state["tag_type"],
             use_crf=state["use_crf"],
             use_rnn=state["use_rnn"],
+            rnn_type=state["rnn_type"]
             rnn_layers=state["rnn_layers"],
             dropout=use_dropout,
             word_dropout=use_word_dropout,
